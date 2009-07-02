@@ -21,7 +21,7 @@ def main():
 
     turnpoints = []
 
-    turnpoints.append(Turnpoint('Salzburg', Coord.deg(47.8005, 13.0444, 0)))
+    turnpoints.append(Turnpoint('Salzburg', Coord.deg(47.798872, 13.047809, 0)))
 
     # TP1: Athletes must walk through a Red Bull arch positioned on the summit of
     # the Gaisberg mountain near Salzburg, Coordinates to be defined.
