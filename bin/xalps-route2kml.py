@@ -22,45 +22,16 @@ def main():
     turnpoints = []
 
     turnpoints.append(Turnpoint('Salzburg', Coord.deg(47.798872, 13.047809, 0)))
-
-    # TP1: Athletes must walk through a Red Bull arch positioned on the summit of
-    # the Gaisberg mountain near Salzburg, Coordinates to be defined.
     turnpoints.append(Turnpoint('Gaisberg', Coord.deg(47.8032, 13.10937, 0)))
-
-    # TP2: Through a cylinder centred around the Watzmann Middle Peak, Germany.
-    # Coordinates: N47°33.310' E012°55.287’. Cylinder: 1000m radius. The athletes
-    # must fly or walk through this cylinder.
-    turnpoints.append(Turnpoint('Watzmann Middle Peak', Coord.deg(47.0+33.310/60.0, 12.0+55.287/60.0, 0)))
-
-    # TP3: Through a cylinder centred around the Grossglockner, Austria.
-    # Coordinates: N47°04.500' E012°41.667’. Cylinder: 5km radius. The athletes must
-    # fly or walk through this cylinder.
-    turnpoints.append(Turnpoint('Grossglocker', Coord.deg(47.0+4.5/60.0, 12.0+41.667/60.0, 0)))
-
-    # TP4: The summit of Marmolada, Italy - Coordinates: N46°26.067' E011°51.033’.
-    # The athletes must fly or walk South of this point.
-    turnpoints.append(Turnpoint('Marmolada', Coord.deg(46.0+26.067/60.0, 11.0+51.033/60.0, 0)))
-
-    # TP5: Through a quarter-cylinder sector, the radius of which is centred on the
-    # Matterhorn Peak, Switzerland, with coordinates:  N45° 58.572'   E7° 39.428'.
-    # The quarter-cylinder has an 4.5km radius, and is bound by its North and East
-    # sides (see diagram). The athletes must fly or walk through this sector. It is
-    # prohibited to enter or exit the sector through the sides of the sector i.e.
-    # the athletes must enter and exit via the curved section.
+    turnpoints.append(Turnpoint('Dachstein', Coord.deg(47.0+28.0/60.0+32.0/3600.0, 13.0+36.0/60.0+23.0/3600.0, 0)))
+    turnpoints.append(Turnpoint('Tre Cima', Coord.deg(46.0+37.0/60.0+7.0/3600.0, 12.0+18.0/60.0+20.0/3600.0, 0)))
+    turnpoints.append(Turnpoint('Piz Palu', Coord.deg(46.0+22.0/60.0+42.0/3600.0, 9.0+57.0/60.0+38.0/3600.0, 0)))
     turnpoints.append(Turnpoint('Matterhorn', Coord.deg(45.0+58.572/60.0, 7.0+39.428/60.0, 0)))
-
-    # TP6: The summit of Mont Blanc in France – Coordinates : N45°49.950'
-    # E006°51.867'. The athlete must fly or walk North of this point.
     turnpoints.append(Turnpoint('Mont Blanc', Coord.deg(45.0+49.950/60.0, 6.0+51.867/60.0, 0)))
-
-    # TP7: The summit of Mont Gros in Monaco - Coordinates: N43°46.026'
-    # E007°26.341'. The athletes must walk or run through a virtual cylinder with a
-    # radius of 100m around the summit of this point. All pilots arriving at the
-    # last turn point (Mont Gros) must land and take off at the paragliding take-off
-    # place, defined in details by the Race Director in advance.
+    turnpoints.append(Turnpoint('Monviso', Coord.deg(44.0+40.0/60.0+3.0/3600.0, 7.0+5.0/60.0+30.0/3600.0, 0)))
     turnpoints.append(Turnpoint('Mont Gros', Coord.deg(43.0+46.026/60.0, 7.0+26.341/60.0, 0)))
 
-    document = kml.Document(name='Red Bull X-Alps 2009 Route', open=1, Snippet='created by Tom Payne twpayne@gmail.com')
+    document = kml.Document(name='Red Bull X-Alps 2011 Route', open=1, Snippet='created by Tom Payne twpayne@gmail.com')
 
     # Route
     line_string = kml.LineString(coordinates=[tp.coord for tp in turnpoints], tessellate=1)
@@ -79,7 +50,9 @@ def main():
         style = kml.Style(icon_style)
         placemark = kml.Placemark(point, style, name=turnpoint.name)
         folder.add(placemark)
-        if index == 2:
+        if True:
+            pass
+        elif index == 2:
             coordinates = kml.coordinates.circle(turnpoint.coord, 1000.0)
             line_string = kml.LineString(coordinates)
             line_style = kml.LineStyle(color=(0.0, 1.0, 0.0, 0.75), width=2)
