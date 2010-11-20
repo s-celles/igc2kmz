@@ -21,16 +21,17 @@ def main():
 
     turnpoints = []
 
-    turnpoints.append(Turnpoint('Salzburg', Coord.deg(47.798872, 13.047809, 0)))
-    turnpoints.append(Turnpoint('Gaisberg', Coord.deg(47.8032, 13.10937, 0)))
-    turnpoints.append(Turnpoint('Dachstein', Coord.deg(47.0+28.0/60.0+32.0/3600.0, 13.0+36.0/60.0+23.0/3600.0, 0)))
-    turnpoints.append(Turnpoint('Tre Cima', Coord.deg(46.0+37.0/60.0+7.0/3600.0, 12.0+18.0/60.0+20.0/3600.0, 0)))
-    turnpoints.append(Turnpoint('Piz Palu', Coord.deg(46.0+22.0/60.0+42.0/3600.0, 9.0+57.0/60.0+38.0/3600.0, 0)))
-    turnpoints.append(Turnpoint('Matterhorn', Coord.deg(45.0+58.572/60.0, 7.0+39.428/60.0, 0)))
-    turnpoints.append(Turnpoint('Mont Blanc', Coord.deg(45.0+49.950/60.0, 6.0+51.867/60.0, 0)))
-    turnpoints.append(Turnpoint('Monviso', Coord.deg(44.0+40.0/60.0+3.0/3600.0, 7.0+5.0/60.0+30.0/3600.0, 0)))
-    turnpoints.append(Turnpoint('Mont Gros', Coord.deg(43.0+46.026/60.0, 7.0+26.341/60.0, 0)))
-
+    turnpoints = [Turnpoint(name, Coord.deg(lat, lon, 0))
+    for name, lat, lon in (
+            ('Salzburg', 47.79885, 13.04840),
+            ('Gaisberg', 47.80413, 13.11091),
+            ('Dachstein', 47.47107, 13.62078),
+            ('Großklockner', 47.07436, 12.69471),
+            ('Tre Cime', 46.61917, 12.30417),
+            ('Piz Palü', 46.37833, 9.9605),
+            ('Matterhorn', 45.97651, 7.65832),
+            ('Mont Blanc', 45.83249, 6.86427),
+            ('Mont Gros', 43.76549, 7.44273))]
     document = kml.Document(name='Red Bull X-Alps 2011 Route', open=1, Snippet='created by Tom Payne twpayne@gmail.com')
 
     # Route
@@ -50,23 +51,28 @@ def main():
         style = kml.Style(icon_style)
         placemark = kml.Placemark(point, style, name=turnpoint.name)
         folder.add(placemark)
-        if True:
-            pass
-        elif index == 2:
+        if index == 3:
+            coordinates = kml.coordinates.circle(turnpoint.coord, 6000.0)
+            line_string = kml.LineString(coordinates)
+            line_style = kml.LineStyle(color=(0.0, 1.0, 0.0, 0.75), width=2)
+            style = kml.Style(line_style)
+            placemark = kml.Placemark(line_string, style)
+            folder.add(placemark)
+        elif index == 4:
             coordinates = kml.coordinates.circle(turnpoint.coord, 1000.0)
             line_string = kml.LineString(coordinates)
             line_style = kml.LineStyle(color=(0.0, 1.0, 0.0, 0.75), width=2)
             style = kml.Style(line_style)
             placemark = kml.Placemark(line_string, style)
             folder.add(placemark)
-        elif index == 3:
-            coordinates = kml.coordinates.circle(turnpoint.coord, 5000.0)
+        elif index == 5:
+            coordinates = kml.coordinates.circle(turnpoint.coord, 6000.0)
             line_string = kml.LineString(coordinates)
             line_style = kml.LineStyle(color=(0.0, 1.0, 0.0, 0.75), width=2)
             style = kml.Style(line_style)
             placemark = kml.Placemark(line_string, style)
             folder.add(placemark)
-        elif index == 5:
+        elif index == 6:
             coordinates = kml.coordinates.arc(turnpoint.coord, 4500.0, 0.0, pi/2.0)
             line_string = kml.LineString(coordinates)
             line_style = kml.LineStyle(color=(0.0, 1.0, 0.0, 0.75), width=2)
@@ -79,8 +85,8 @@ def main():
             style = kml.Style(line_style)
             placemark = kml.Placemark(line_string, style)
             folder.add(placemark)
-        elif index == 7:
-            coordinates = kml.coordinates.circle(turnpoints[7].coord, 100.0)
+        elif index == 8:
+            coordinates = kml.coordinates.circle(turnpoint.coord, 100.0)
             line_string = kml.LineString(coordinates)
             line_style = kml.LineStyle(color=(0.0, 1.0, 0.0, 0.75), width=2)
             style = kml.Style(line_style)
