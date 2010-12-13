@@ -27,7 +27,7 @@ def main(argv):
             color = ''.join('%02x' % (255 * x) for x in reversed(default_gradient(float(i) / (len(tracks) - 1))))
         for date in sorted(tracks[team].keys()):
             track = tracks[team][date]
-            line_string = kml.LineString(coordinates=track.coords, altitudeMode='absolute')
+            line_string = kml.LineString(coordinates=track.coords, altitudeMode='absolute', extrude=1)
             style = kml.Style(kml.LineStyle(color=color, width=2))
             placemark = kml.Placemark(line_string, style, name=date)
             team_folder.add(placemark)
