@@ -35,7 +35,7 @@ class Track(object):
         self.glider_type = None
         self.glider_id = None
         self.__dict__.update(kwargs)
-        self.analyse(20)
+        #self.analyse(20)
 
     @classmethod
     def filter(self, coords):
