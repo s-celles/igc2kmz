@@ -73,13 +73,13 @@ def main():
             placemark = kml.Placemark(line_string, style)
             folder.add(placemark)
         elif index == 6:
-            coordinates = kml.coordinates.arc(turnpoint.coord, 4500.0, 0.0, pi/2.0)
+            coordinates = kml.coordinates.arc(turnpoint.coord, 5500.0, 0.0, pi/2.0)
             line_string = kml.LineString(coordinates)
             line_style = kml.LineStyle(color=(0.0, 1.0, 0.0, 0.75), width=2)
             style = kml.Style(line_style)
             placemark = kml.Placemark(line_string, style)
             folder.add(placemark)
-            coordinates = [turnpoint.coord.coord_at(0.0, 4500.0), turnpoint.coord, turnpoint.coord.coord_at(pi/2.0, 4500.0)]
+            coordinates = [turnpoint.coord.coord_at(0.0, 5500.0), turnpoint.coord, turnpoint.coord.coord_at(pi/2.0, 5500.0)]
             line_string = kml.LineString(coordinates=coordinates, tessellate=1)
             line_style = kml.LineStyle(color=(1.0, 0.0, 0.0, 0.75), width=2)
             style = kml.Style(line_style)
